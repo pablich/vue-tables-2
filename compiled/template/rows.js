@@ -16,19 +16,11 @@ module.exports = function (h, that) {
     columns = [];
 
     if (that.hasChildRow) {
-      var childRowToggler = h(
-        'td',
-        null,
-        [h(
-          'span',
-          {
-            on: {
-              'click': that.toggleChildRow.bind(that, row[rowKey])
-            },
-            'class': 'VueTables__child-row-toggler ' + that.childRowTogglerClass(row[rowKey]) },
-          []
-        )]
-      );
+      var childRowToggler = h('td', [h('span', {
+        on: {
+          'click': that.toggleChildRow.bind(that, row[rowKey])
+        },
+        'class': 'VueTables__child-row-toggler ' + that.childRowTogglerClass(row[rowKey]) })]);
       if (that.opts.childRowTogglerFirst) columns.push(childRowToggler);
     }
 

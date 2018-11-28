@@ -49,19 +49,7 @@ module.exports = function (source) {
         [h(
           'table',
           { 'class': 'VueTables__table table ' + this.opts.skin },
-          [h(
-            'thead',
-            null,
-            [h(
-              'tr',
-              null,
-              [headings]
-            ), beforeFilters, columnFilters, afterFilters]
-          ), footerHeadings, beforeBody, h(
-            'tbody',
-            null,
-            [prependBody, noResults, rows, appendBody]
-          ), afterBody]
+          [h('thead', [h('tr', [headings]), beforeFilters, columnFilters, afterFilters]), footerHeadings, beforeBody, h('tbody', [prependBody, noResults, rows, appendBody]), afterBody]
         )]
       ), pagination, dropdownPaginationCount]
     );

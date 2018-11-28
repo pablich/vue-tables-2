@@ -8,11 +8,7 @@ module.exports = function (h, that) {
 
   var footerHeadings = [];
 
-  if (that.hasChildRow && that.opts.childRowTogglerFirst) footerHeadings.push(h(
-    'th',
-    null,
-    []
-  ));
+  if (that.hasChildRow && that.opts.childRowTogglerFirst) footerHeadings.push(h('th'));
 
   var columns = that.allColumns;
 
@@ -35,19 +31,7 @@ module.exports = function (h, that) {
     ));
   });
 
-  if (that.hasChildRow && !that.opts.childRowTogglerFirst) footerHeadings.push(h(
-    'th',
-    null,
-    []
-  ));
+  if (that.hasChildRow && !that.opts.childRowTogglerFirst) footerHeadings.push(h('th'));
 
-  return h(
-    'tfoot',
-    null,
-    [h(
-      'tr',
-      null,
-      [footerHeadings]
-    )]
-  );
+  return h('tfoot', [h('tr', [footerHeadings])]);
 };

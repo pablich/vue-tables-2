@@ -5,31 +5,24 @@ module.exports = function (h, that) {
     if (!that.opts.columnsDropdown) return '';
 
     var cols = that.columns.map(function (column) {
-        return h(
-            "li",
-            null,
-            [h(
-                "a",
-                {
-                    attrs: { href: "#" }
+        return h("li", [h(
+            "a",
+            {
+                attrs: { href: "#" }
+            },
+            [h("input", {
+                attrs: { type: "checkbox",
+                    disabled: that._onlyColumn(column)
                 },
-                [h(
-                    "input",
-                    {
-                        attrs: { type: "checkbox", value: column,
-                            disabled: that._onlyColumn(column)
-                        },
-                        on: {
-                            "change": that.toggleColumn.bind(that, column)
-                        },
-                        domProps: {
-                            "checked": that.allColumns.includes(column)
-                        }
-                    },
-                    []
-                ), that.getHeading(column)]
-            )]
-        );
+                domProps: {
+                    "value": column,
+                    "checked": that.allColumns.includes(column)
+                },
+                on: {
+                    "change": that.toggleColumn.bind(that, column)
+                }
+            }), that.getHeading(column)]
+        )]);
     });
 
     return h(
@@ -44,11 +37,7 @@ module.exports = function (h, that) {
                     "click": that._toggleColumnsDropdown.bind(that)
                 }
             },
-            [that.display('columns'), " ", h(
-                "span",
-                { "class": "caret" },
-                []
-            )]
+            [that.display('columns'), " ", h("span", { "class": "caret" })]
         ), h(
             "ul",
             { "class": "dropdown-menu", style: that.displayColumnsDropdown ? 'display:block' : 'display:none' },

@@ -6,11 +6,7 @@ module.exports = function (h, that) {
 
   var headings = [];
 
-  if (that.hasChildRow && that.opts.childRowTogglerFirst) headings.push(h(
-    "th",
-    null,
-    []
-  ));
+  if (that.hasChildRow && that.opts.childRowTogglerFirst) headings.push(h("th"));
 
   that.allColumns.map(function (column) {
     headings.push(h(
@@ -30,11 +26,7 @@ module.exports = function (h, that) {
     ));
   }.bind(that));
 
-  if (that.hasChildRow && !that.opts.childRowTogglerFirst) headings.push(h(
-    "th",
-    null,
-    []
-  ));
+  if (that.hasChildRow && !that.opts.childRowTogglerFirst) headings.push(h("th"));
 
   return headings;
 };

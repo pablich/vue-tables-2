@@ -19,11 +19,7 @@ module.exports = function (h, that) {
   var filters = [];
   var filter;
 
-  if (that.hasChildRow && that.opts.childRowTogglerFirst) filters.push(h(
-    'th',
-    null,
-    []
-  ));
+  if (that.hasChildRow && that.opts.childRowTogglerFirst) filters.push(h('th'));
 
   that.allColumns.map(function (column) {
 
@@ -41,11 +37,7 @@ module.exports = function (h, that) {
     }
 
     if (typeof that.$slots['filter__' + column] !== 'undefined') {
-      filter = filter ? h(
-        'div',
-        null,
-        [filter, that.$slots['filter__' + column]]
-      ) : that.$slots['filter__' + column];
+      filter = filter ? h('div', [filter, that.$slots['filter__' + column]]) : that.$slots['filter__' + column];
     }
 
     filters.push(h(
@@ -59,11 +51,7 @@ module.exports = function (h, that) {
     ));
   });
 
-  if (that.hasChildRow && !that.opts.childRowTogglerFirst) filters.push(h(
-    'th',
-    null,
-    []
-  ));
+  if (that.hasChildRow && !that.opts.childRowTogglerFirst) filters.push(h('th'));
 
   return h(
     'tr',
